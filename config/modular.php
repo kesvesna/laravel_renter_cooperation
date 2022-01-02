@@ -10,12 +10,14 @@ return [
             'api' => ['auth.api']
         ]
     ],
+
     'modules' => [
         'Admin' => [
+            'Dashboard',
             'User',
         ],
         'Pub' => [
-            'Auth',
-        ]
+            'Auth'
+        ],
     ]
 ];
