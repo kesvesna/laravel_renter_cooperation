@@ -2,6 +2,6 @@
 
 return [
 
-    'dashboard_title_page' => 'Dashboard page title',
+    'dashboard_title_page' => 'Home',
 
 ];
