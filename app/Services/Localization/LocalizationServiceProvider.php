@@ -13,9 +13,11 @@ class LocalizationServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('Localization', function ($app){
+        //
+        $this->app->singleton('Localization', function($app) {
             return new Localization();
         });
+
     }
 
     /**

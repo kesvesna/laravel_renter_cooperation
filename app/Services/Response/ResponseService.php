@@ -1,12 +1,17 @@
 <?php
-
+/**
+ * Created by PhpStorm.
+ * User: note
+ * Date: 15.11.2020
+ * Time: 10:22
+ */
 
 namespace App\Services\Response;
 
 
 class ResponseService
 {
-    private static function responseParams($status, $errors = [], $data = []){
+    private static function responseParams($status, $errors = [], $data = []) {
         return [
             'status' => $status,
             'errors' => (object)$errors,
@@ -14,21 +19,18 @@ class ResponseService
         ];
     }
 
-    public static function sendJsonResponse($status, $code = 200, $errors = [], $data = [])
-    {
+    public static function sendJsonResponse($status, $code = 200, $errors = [], $data = []) {
         return response()->json(
             self::responseParams($status, $errors, $data),
-            $code,
+            $code
         );
     }
 
-    public static function success($data = [])
-    {
-        return self::sendJsonResponse(true, 200, [], $data);
+    public static function success($data = []) {
+        return self::sendJsonResponse(true, 200, [],$data);
     }
 
-    public static function notFound($data = [])
-    {
-        return self::sendJsonResponse(false, 404, [], $data);
+    public static function notFound($data = []) {
+        return self::sendJsonResponse(false, 404, [],[]);
     }
 }
