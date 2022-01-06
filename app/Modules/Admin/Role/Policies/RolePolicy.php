@@ -35,5 +35,6 @@ class RolePolicy
 
     public function delete(User $user)
     {
-        return $user->canDo(['SUPER_ADMINISTRATOR', 'ROLES_ACCESS']);    }
+        return $user->canDo(['SUPER_ADMINISTRATOR', 'ROLES_ACCESS']);
+    }
 }
