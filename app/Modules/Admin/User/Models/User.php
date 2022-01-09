@@ -6,7 +6,7 @@ use App\Modules\Admin\Lead\Models\Traits\UserLeadsTrait;
 use App\Modules\Admin\Role\Models\Traits\UserRoles;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as AuthUser;
-use Laravel\Sanctum\HasApiTokens;
+use Laravel\Passport\HasApiTokens;
 
 class User extends AuthUser
 {
@@ -15,13 +15,20 @@ class User extends AuthUser
     protected $fillable = [
         'firstname',
         'lastname',
-        'phone',
         'email',
-        'status'
+        'phone',
+        'status',
     ];
 
     protected $hidden = [
-        'password',
-        'deleted_at'
+        'password'
     ];
+
+    public function getFullnameAttribute() {
+        return $this->firtsname.' '.$this->lastname;
+    }
+
+
+
+
 }

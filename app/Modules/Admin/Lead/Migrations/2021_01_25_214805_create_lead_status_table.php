@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLeadCommentsTable extends Migration
+class CreateLeadStatusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,23 +13,14 @@ class CreateLeadCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('lead_comments', function (Blueprint $table) {
+        Schema::create('lead_status', function (Blueprint $table) {
             $table->id();
 
-            $table->text('text');
-
-            $table->bigInteger('user_id')->unsigned()->nullable();
-            $table->foreign('user_id')->references('id')->on('users');
-
             $table->bigInteger('lead_id')->unsigned()->nullable();
-            $table->foreign('lead_id')->references('id')->on('leads');
-
             $table->bigInteger('status_id')->unsigned()->nullable();
+
+            $table->foreign('lead_id')->references('id')->on('leads');
             $table->foreign('status_id')->references('id')->on('statuses');
-
-            $table->text('comment_value')->nullable();
-
-            $table->boolean('is_event')->default(0);
 
             $table->timestamps();
             $table->softDeletes();
@@ -43,6 +34,6 @@ class CreateLeadCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lead_comments');
+        Schema::dropIfExists('lead_status');
     }
 }
